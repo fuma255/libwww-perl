@@ -41,6 +41,7 @@ install:
 before_script:
   - coverage-setup
 script:
+  - sed -r -i -e 's/^s*\{\{\$NEXT}}$/{{$NEXT}}\n    - /' Changes
   - perl Makefile.PL
   - make
   - prove -b -r -s -j$(test-jobs) $(test-files)
